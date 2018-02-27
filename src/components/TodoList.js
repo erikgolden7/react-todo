@@ -8,28 +8,36 @@ class TodoList extends Component {
 
     this.state = {
       items: []
+      // inputItem: ""
     };
 
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
   }
 
   // Add Items
   addItem(e) {
+    console.log(this.inputElement);
     e.preventDefault();
     var itemArray = this.state.items;
-    if (this._inputElement.value !== "") {
-      itemArray.unshift({
-        text: this._inputElement.value,
+    if (this.inputElement.value !== "") {
+      itemArray.push({
+        text: this.inputElement.value,
         key: Date.now()
       });
       this.setState({
         items: itemArray
       });
-      this._inputElement.value = "";
+      this.inputElement.value = "";
     }
     console.log(itemArray);
   }
+
+  // handleChange(e) {
+  //   console.log(e.target.value);
+  //   this.setState({ inputItem: e.target.value });
+  // }
 
   // Delete Items
   deleteItem(key) {
@@ -48,10 +56,12 @@ class TodoList extends Component {
         <div className="header">
           <form onSubmit={this.addItem}>
             <input
-              ref={a => (this._inputElement = a)}
+              ref={a => (this.inputElement = a)}
+              // type="text"
+              // onChange={this.handleChange}
               placeholder="enter task"
             />
-            <button type="submit"> add </button>
+            <button type="submit"> Add </button>
           </form>
         </div>
         <TodoItems entries={this.state.items} delete={this.deleteItem} />
