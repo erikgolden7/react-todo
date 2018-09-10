@@ -1,13 +1,6 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import "./styles/index.css";
-import TodoList from "./components/TodoList";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import TodoList from './components/TodoList';
+import './styles/index.css';
 
-var dest = document.querySelector("#root");
-
-ReactDOM.render(
-  <div>
-    <TodoList />
-  </div>,
-  dest
-);
+ReactDOM.render(<TodoList />, document.querySelector('#root'));
